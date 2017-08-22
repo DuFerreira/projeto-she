@@ -73,6 +73,8 @@
 'collapse/expand all': 'fechar/abrir todos',
 'commit (mercurial)': 'commit (mercurial)',
 'Compile': 'Compilar',
+'Compile (all or nothing)': 'Compile (all or nothing)',
+'Compile (skip failed views)': 'Compile (skip failed views)',
 'compiled application removed': 'a aplicação compilada foi removida',
 'Controllers': 'Controladores',
 'controllers': 'controladores',
@@ -106,6 +108,7 @@
 'Deploy': 'Publicar',
 'Deploy on Google App Engine': 'Publicar no Google App Engine',
 'Deploy to OpenShift': 'Publicar no OpenShift',
+'Deploy to PythonAnywhere': 'Deploy to PythonAnywhere',
 'Description': 'Descrição',
 'design': 'projeto',
 'DESIGN': 'Projeto',
@@ -344,5 +347,6 @@
 'web2py Recent Tweets': 'Tweets Recentes de @web2py',
 'web2py upgraded; please restart it': 'web2py atualizado; favor reiniciar',
 'Welcome to web2py': 'Bem-vindo ao web2py',
+'Working...': 'Working...',
 'YES': 'SIM',
 }

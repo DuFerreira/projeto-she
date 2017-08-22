@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S'<type \'exceptions.SyntaxError\'> define_table argument is not a Field or Table: <input type="submit" />'
+p3
+sS'layer'
+p4
+S'/opt/web2py/applications/she/controllers/turma.py'
+p5
+sS'code'
+p6
+S'def index():\n\tquery=(Turmas.id)\n\ttotal = db(query).count()\n\t#link = URL(\'list_records\', args=\'db\')\n\t\n\t#form = crud.select(db.chamadas == auth.user_id, fields=[\'data_acionamento\', \'sistema\', \'email\', \'estado\'])\n\tquery = ((Enturmacoes.aluno == auth.user.id)\n\t\t& (Enturmacoes.enturmacao == Turmas.id)\n\t\t& (Turmas.turma == Disciplinas.id))\n\talunos=db(query).select(db.auth_user.first_name)\n\tform = SQLFORM.grid(query,\n\tfields=[\n\tDisciplinas.disciplina,\n\tTurmas.semestre,\n\tTurmas.professor],deletable=False, create=False, editable=False, paginate=10)\n\treturn locals()\n\treturn dict(total=total, form=form, alunos=alunos)\n\n\ndef inserir():\n\trequest.env.request_method = \'POST\'\n\t\'\'\'curl -d "disciplina=Tim" http://127.0.0.1:8000/she/rest/api/disciplinas\'\'\'\n\tform=SQLFORM.factory(\n\t\tField(\'disciplina\', \'string\'),\n\t\tField(\'descricao\', \'text\'),\n\t\tINPUT(_type=\'submit\'),\n\t\t_action=URL(\'rest\', \'api/disciplinas.json\'))\n\t\n\tif form.process().accepted:\n\t\tredirect(URL(\'#\'))\n\treturn dict(form=form,vars=form.vars)\n\n\n\n\nresponse._vars=response._caller(inserir)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/opt/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/opt/web2py/applications/she/controllers/turma.py", line 36, in <module>\n  File "/opt/web2py/gluon/globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "/opt/web2py/applications/she/controllers/turma.py", line 27, in inserir\n    _action=URL(\'rest\', \'api/disciplinas.json\'))\n  File "/opt/web2py/gluon/sqlhtml.py", line 1808, in factory\n    return SQLFORM(DAL(None).define_table(table_name, *fields),\n  File "/opt/web2py/gluon/packages/dal/pydal/base.py", line 834, in define_table\n    table = self.lazy_define_table(tablename,*fields,**args)\n  File "/opt/web2py/gluon/packages/dal/pydal/base.py", line 851, in lazy_define_table\n    table = table_class(self, tablename, *fields, **args)\n  File "/opt/web2py/gluon/packages/dal/pydal/objects.py", line 299, in __init__\n    field\nSyntaxError: define_table argument is not a Field or Table: <input type="submit" />\n'
+p11
+s.

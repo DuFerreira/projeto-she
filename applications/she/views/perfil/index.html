@@ -1,0 +1,50 @@
+{{extend 'layout.html'}}
+<div class="container-fluid">
+	<div class="row">
+		<h1 class="text-center">Perfil</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Dados Pessoais
+					</h3>
+				</div>
+				<div class="panel-body">
+					{{=perfil}}
+
+				</div>
+				<div class="panel-footer  text-right">
+					{{=A('Atualizar Perfil', _href=URL(request.application,'default/user', 'profile'), _class="btn btn-default")}}
+
+					{{=A('Atualizar Senha', _href=URL(request.application,'default/user', 'change_password'), _class="btn btn-default")}}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Minhas Turmas
+					</h3>
+				</div>
+				<div class="panel-body">
+
+					<div class="table>
+						<div class="row">
+							<div class="col-md-9">{{=disciplina}}</div>
+							<div class="col-md-3">{{=semestre}}</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="panel-footer text-right">
+					<button type="button" class="btn btn-default">
+					Ver Turmas
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

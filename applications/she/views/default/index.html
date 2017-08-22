@@ -1,0 +1,79 @@
+{{extend 'layout.html'}}
+<style type="text/css">
+  .botao_redondo > *{border-radius: 50%;}
+
+</style>
+
+{{block header}}
+    <header class="container-fluid background">
+      <div class="jumbotron text-center">
+        {{if response.title:}}
+        <h1>{{=response.title}}
+          <small>{{=response.subtitle or ''}}</small></h1>
+        {{pass}}
+      </div>
+    </header>
+{{end}}
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center">
+      {{if 'message' in globals():}}
+      {{=message}}
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4 text-center " >
+        {{=A(IMG(_src=URL('static/images', 'avatar_perfil.png'), _alt='Acessar Administração de Perfil', _class='img-circle img-responsive'), H3('Perfil'), _href=URL('perfil', 'index'))}}
+        </div>
+       <div class="col-md-4 text-center " >
+        {{=A(IMG(_src=URL('static/images', 'avatar_perfil.png'), _alt='Acessar Administração de Perfil', _class='img-circle img-responsive'), H3('Turmas'), _href=URL('turma', 'index') )}}
+        </div>
+        <div class="col-md-4 text-center " >
+        {{=A(IMG(_src=URL('static/images', 'avatar_perfil.png'), _alt='Acessar Administração de Perfil', _class='img-circle img-responsive'), H3('Estatísticas'), _href=URL('#') )}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4 text-center " >
+        {{=A(IMG(_src=URL('static/images', 'avatar_perfil.png'), _alt='Acessar Administração de Perfil', _class='img-circle img-responsive'), H3('Conteúdos'), _href=URL('#') )}}
+        </div>
+        <div class="col-md-4 text-center " >
+        {{=A(IMG(_src=URL('static/images', 'avatar_perfil.png'), _alt='Acessar Administração de Perfil', _class='img-circle img-responsive'), H3('Questionários'), _href=URL('#') )}}
+        </div>
+        <div class="col-md-4 text-center " >
+        {{=A(IMG(_src=URL('static/images', 'avatar_perfil.png'), _alt='Acessar Administração de Perfil', _class='img-circle img-responsive'), H3('Sair'), _href=URL('#') )}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
+{{block right_sidebar}}
+<div class="panel panel-info">
+  <div class="panel-heading"><h3 class="panel-title"><a class="btn-block"
+      href="{{=URL('admin','default','index')}}">
+      <i class="glyphicon glyphicon-cog"></i>
+      {{=T("admin")}}
+    </a></h3></div>
+  <div class="panel-body">
+    {{=T("Don't know what to do?")}}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">{{=A(T("Online examples"), _href=URL('examples','default','index'))}}</li>
+    <li class="list-group-item"><a href="http://web2py.com">web2py.com</a></li>
+    <li class="list-group-item"><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
+  </ul>
+</div>
+{{end}}

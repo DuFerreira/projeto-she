@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.ValueError'> invalid literal for int() with base 10: 'alunos'"
+p3
+sS'layer'
+p4
+S'/opt/web2py/applications/she/controllers/rest.py'
+p5
+sS'code'
+p6
+S'@request.restful()\ndef api():\n    table_name = request.args(0)\n    \'\'\'response.view = \'generic.\'+request.extension   \'\'\'\n    def GET(*args,**vars):\n        patterns = [\n        "/disciplina[disciplinas]",\n        "/disciplina/{disciplinas.disciplina.startswith}",\n        "/disciplina/{disciplinas.disciplina}/:field",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}/:field",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}/enturmacao[enturmacoes.enturmacao]",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}/enturmacao[enturmacoes.enturmacao]/{enturmacoes.alunos}",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}/enturmacao[enturmacoes.enturmacao]/{enturmacoes.alunos}/alunos[auth_user]"\n        ]\n        parser = db.parse_as_rest(patterns,args,vars)\n\n        #tabela = db(db.auth_user.id == parser.response[0]).select()\n\n        #resposta0=parser.response[0]\n        #alunos=parser.response.as_dict()\n        if parser.status == 200:\n            return locals()\n        else:\n            raise HTTP(parser.status,parser.error)\n    def POST(table_name,**vars):\n        retornar = (db[table_name].validate_and_insert(**vars))\n        if(retornar[\'errors\']==None):\n            return dict(retornar=\'Frase n\xc3\xbamero \'+retornar[\'id\']+\' inserida com sucesso\')\n        \n    def PUT(table_name,record_id,**vars):\n        return db(db[table_name]._id==record_id).update(**vars)\n    def DELETE(table_name,record_id):\n        return db(db[table_name]._id==record_id).delete()\n    return dict(GET=GET, POST=POST, PUT=PUT, DELETE=DELETE)\n\nresponse._vars=response._caller(api)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/opt/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/opt/web2py/applications/she/controllers/rest.py", line 38, in <module>\n  File "/opt/web2py/gluon/globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "/opt/web2py/gluon/globals.py", line 380, in f\n    res = rest_action(*request.args, **request.vars)\n  File "/opt/web2py/applications/she/controllers/rest.py", line 17, in GET\n    parser = db.parse_as_rest(patterns,args,vars)\n  File "/opt/web2py/gluon/packages/dal/pydal/base.py", line 782, in parse_as_rest\n    count = dbset.count()\n  File "/opt/web2py/gluon/packages/dal/pydal/objects.py", line 2010, in count\n    return db._adapter.count(self.query, distinct)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 1321, in count\n    self.execute(self._count(query, distinct))\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 1308, in _count\n    sql_w = \' WHERE \' + self.expand(query)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 952, in expand\n    rv = op(first, second, **optional_args)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 767, in AND\n    return \'(%s AND %s)\' % (self.expand(first), self.expand(second))\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 952, in expand\n    rv = op(first, second, **optional_args)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 846, in EQ\n    self.expand(second, first.type))\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 962, in expand\n    rv = self.represent(expression, field_type)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 1418, in represent\n    obj = list(map(int,[o for o in obj if o != \'\']))\nValueError: invalid literal for int() with base 10: \'alunos\'\n'
+p11
+s.

@@ -1,0 +1,87 @@
+{{extend 'layout.html'}}
+{{
+if not request.args:
+
+ w2p_grid_tbl = grid.element('table')
+ if w2p_grid_tbl:
+ original_export_menu = grid.element('div.w2p_export_menu')
+ export_menu_links = original_export_menu.elements('a')
+ export_menu_items = []
+ for link in export_menu_links:
+ item = LI(link)
+ export_menu_items.append(item)
+ pass
+ new_export_menu = DIV(
+                      A( T('Exports'),
+                         SPAN(_class='caret'),
+                         _href='#',
+                         _class='btn dropdown-toggle btn-default',
+                         **{'_data-toggle':"dropdown"}
+                        ),
+                      UL(*export_menu_items,
+                         _class='dropdown-menu'
+                        ),
+                    _class='w2p_export_menu btn-group'
+                    )
+ export_menu = grid.element('div.w2p_export_menu',replace=new_export_menu)
+ pass
+pass
+}}
+
+<style>
+ul.dropdown-menu>li>a.btn{
+	background-color: #FFF;
+}
+ul.dropdown-menu>li>a.btn:hover{
+	background-color: #29ABE0;
+}
+</style>
+
+
+
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+							Minhas Turmas
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{=grid}}
+						</div>
+					</div>
+					
+				
+					
+					
+				</div>
+				<div class="col-md-4">
+					<div class="list-group">
+						 <a href="#" class="list-group-item active">Home</a>
+						<div class="list-group-item">
+							List header
+						</div>
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">
+								{{='saida'}}
+								
+							</h4>
+							<p class="list-group-item-text">
+								...
+							</p>
+						</div>
+						<div class="list-group-item">
+							<span class="badge">14</span>Help
+						</div> <a class="list-group-item active"><span class="badge">14</span>Help</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

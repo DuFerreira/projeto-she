@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.AttributeError'> 'NoneType' object has no attribute 'id'"
+p3
+sS'layer'
+p4
+S'/opt/web2py/applications/she/controllers/perfil.py'
+p5
+sS'code'
+p6
+S"export_classes = dict(csv=False\t, json=False, html=False,\n\ttsv=False, xml=False, csv_with_hidden_cols=False,\n\ttsv_with_hidden_cols=False)\ndef index():\n\tmsg = T('Sistema Hibrido de Ensino')\n\tperfil = crud.read(db.auth_user, auth.user.id)\n\tif auth.has_membership('aluno'):\n\t\tquery = ((Enturmacoes.alunos == auth.user.id)\n\t\t\t&(Turmas.professor == db.auth_user.id)\n\t\t\t&(Enturmacoes.enturmacao == Turmas.id)\n\t\t\t&(Turmas.turma == Disciplinas.id))\n\telif auth.has_membership('professor'):\n\t\tquery = ((Turmas.professor == auth.user.id)\n\t\t\t&(Turmas.turma == Disciplinas.id))\n\tdisciplina = crud.select(Disciplinas, query, fields=[Disciplinas.disciplina])\n\tsemestre = crud.select(Turmas, query, fields=[Turmas.semestre], exportclasses=export_classes)\n\t\n\t#professor = crud.select(Enturmacoes, query, fields=[Turmas.professor], exportclasses=export_classes)\n\t\n\t#turma = SQLFORM.grid(query, searchable=False, deletable=False, editable=False, create=False,paginate=5,  exportclasses=export_classes)\n\n\n\n\treturn dict(perfil=perfil, disciplina=disciplina, semestre=semestre)\n\n@auth.requires_membership('administrador')\ndef usuarios():\n\tform = SQLFORM.grid(db.auth_user)\n\treturn dict(form=form)\n\n@auth.requires_membership('administrador')\ndef grupos():\n\tform = SQLFORM.grid(db.auth_group)\n\treturn dict(form=form)\n\n@auth.requires_membership('administrador')\ndef membros():\n\tform = SQLFORM.grid(db.auth_membership)\n\treturn dict(form=form)\n\nresponse._vars=response._caller(index)\n"
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/opt/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/opt/web2py/applications/she/controllers/perfil.py", line 41, in <module>\n  File "/opt/web2py/gluon/globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "/opt/web2py/applications/she/controllers/perfil.py", line 6, in index\n    perfil = crud.read(db.auth_user, auth.user.id)\nAttributeError: \'NoneType\' object has no attribute \'id\'\n'
+p11
+s.

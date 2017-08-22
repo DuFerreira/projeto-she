@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.ValueError'> invalid literal for long() with base 10: '|1|'"
+p3
+sS'layer'
+p4
+S'/opt/web2py/applications/she/controllers/rest.py'
+p5
+sS'code'
+p6
+S'@request.restful()\ndef api():\n    table_name = request.args(0)\n    \'\'\'response.view = \'generic.\'+request.extension   \'\'\'\n    def GET(*args,**vars):\n        patterns = [\n        "/disciplina[disciplinas]",\n        "/disciplina/{disciplinas.disciplina.startswith}",\n        "/disciplina/{disciplinas.disciplina}/:field",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}/:field",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}/enturmacao[enturmacoes.enturmacao]",\n        "/disciplina/{disciplinas.disciplina}/turma[turmas.turma]/{turmas.semestre}/enturmacao[enturmacoes.enturmacao]/{enturmacoes.alunos}",\n        ]\n        parser = db.parse_as_rest(patterns,args,vars)\n\n        tabela = db(db.auth_user.id == parser.response[0][\'alunos\']).select()\n\n\n        alunos=parser.response.as_dict()\n        if parser.status == 200:\n            return locals()\n        else:\n            raise HTTP(parser.status,parser.error)\n    def POST(table_name,**vars):\n        retornar = (db[table_name].validate_and_insert(**vars))\n        if(retornar[\'errors\']==None):\n            return dict(retornar=\'Frase n\xc3\xbamero \'+retornar[\'id\']+\' inserida com sucesso\')\n        \n    def PUT(table_name,record_id,**vars):\n        return db(db[table_name]._id==record_id).update(**vars)\n    def DELETE(table_name,record_id):\n        return db(db[table_name]._id==record_id).delete()\n    return dict(GET=GET, POST=POST, PUT=PUT, DELETE=DELETE)\n\nresponse._vars=response._caller(api)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/opt/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/opt/web2py/applications/she/controllers/rest.py", line 37, in <module>\n  File "/opt/web2py/gluon/globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "/opt/web2py/gluon/globals.py", line 380, in f\n    res = rest_action(*request.args, **request.vars)\n  File "/opt/web2py/applications/she/controllers/rest.py", line 18, in GET\n    tabela = db(db.auth_user.id == parser.response[0][\'alunos\']).select()\n  File "/opt/web2py/gluon/packages/dal/pydal/objects.py", line 2020, in select\n    return adapter.select(self.query, fields, attributes)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/sqlite.py", line 123, in select\n    return super(SQLiteAdapter, self).select(query, fields, attributes)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 1283, in select\n    sql = self._select(query, fields, attributes)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 1170, in _select\n    sql_w = \' WHERE \' + self.expand(query) if query else \'\'\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 952, in expand\n    rv = op(first, second, **optional_args)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 846, in EQ\n    self.expand(second, first.type))\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 962, in expand\n    rv = self.represent(expression, field_type)\n  File "/opt/web2py/gluon/packages/dal/pydal/adapters/base.py", line 1435, in represent\n    return str(long(obj))\nValueError: invalid literal for long() with base 10: \'|1|\'\n'
+p11
+s.
